@@ -1,0 +1,6 @@
+framework module Pods_iTunes_ArtistsUITests {
+  umbrella header "Pods-iTunes ArtistsUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
