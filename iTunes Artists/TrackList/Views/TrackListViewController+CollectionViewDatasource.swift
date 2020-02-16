@@ -15,14 +15,14 @@ extension TrackListViewController: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let count = trackListVM.getTrackSize() else { return 0 }
+        guard let count = trackListVM?.getTrackSize() else { return 0 }
         self.trackListCollectionView.backgroundView?.isHidden = true
         return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let track = trackListVM?.getTrack(at: indexPath.row) else { return UICollectionViewCell() }
         if let cell = self.trackListCollectionView.dequeueReusableCell(withReuseIdentifier: "trackCell", for: indexPath) as? TrackCollectionViewCell {
-            let track = trackListVM.getTrack(at: indexPath.row)!
             cell.settup(track: track)
             return cell
         } else {

@@ -10,13 +10,14 @@ import UIKit
 
 class TrackListViewController: UIViewController {
 
-    var trackListVM = TrackListViewModel()
+    var trackListVM: TrackListViewModelType?
     var refreshControl = UIRefreshControl()
 
     @IBOutlet weak var trackListCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        trackListVM.delegate = self
+        self.trackListVM = TrackListViewModel()
+        trackListVM?.delegate = self
         settupSearch()
         settupCollectionView()
         // Do any additional setup after loading the view.
@@ -46,7 +47,7 @@ class TrackListViewController: UIViewController {
     
     @objc func reload() {
         self.trackListCollectionView.backgroundView?.isHidden = true
-        trackListVM.reloadLastSearch()
+        trackListVM?.reloadLastSearch()
     }
 
 }

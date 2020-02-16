@@ -11,7 +11,7 @@ import AlamofireImage
 
 class TrackCollectionViewCell: UICollectionViewCell {
     
-    var trackVM: TrackViewModel?
+    var trackVM: TrackViewModelType?
     
     @IBOutlet weak var trackImageView: UIImageView!
     @IBOutlet weak var songsNameLabel: UILabel!

@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct TracksSearch: Decodable {
+class TracksSearch: Decodable {
     var results: [Track]?
 }

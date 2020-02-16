@@ -17,7 +17,7 @@ class WatchTrackViewController: UIViewController {
     @IBOutlet weak var songTitle: UILabel!
     @IBOutlet weak var artistName: UILabel!
     
-    var watchTrackVM: WatchTrackViewModel?
+    var watchTrackVM: WatchTrackViewModelType?
     
     override func viewDidAppear(_ animated: Bool) {
         viewSettup()

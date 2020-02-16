@@ -9,13 +9,13 @@
 import Foundation
 
 struct Track: Decodable {
-    var artistId: Int?
-    var collectionId: Int?
-    var trackId: Int?
-    var artistName: String?
-    var trackCensoredName: String?
-    var artistViewUrl: String?
-    var trackTimeMillis: Int?
-    var artworkUrl100: String?
-    var previewUrl: String?
+    let artistId: Int?
+    let collectionId: Int?
+    let trackId: Int?
+    let artistName: String?
+    let trackCensoredName: String?
+    let artistViewUrl: String?
+    let trackTimeMillis: Int?
+    let artworkUrl100: String?
+    let previewUrl: String?
 }

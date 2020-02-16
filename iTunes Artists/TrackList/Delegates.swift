@@ -20,10 +20,12 @@ protocol TrackListViewModelType {
     var lastSearch:String { get set }
     var page:Int { get set }
     var noMorePages:Bool { get set }
+    func searching() -> Bool
     func search(searchText:String)
     func getTrackSize() -> Int?
     func getTrack(at index: Int) -> Track?
     func reloadLastSearch()
+    func getNextPage()
 }
 
 protocol TrackViewModelType {

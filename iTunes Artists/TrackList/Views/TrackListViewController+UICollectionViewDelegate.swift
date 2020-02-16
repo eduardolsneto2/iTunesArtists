@@ -10,17 +10,18 @@ import UIKit
 
 extension TrackListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard let count = self.trackListVM.getTrackSize() else { return }
+        guard let count = self.trackListVM?.getTrackSize() else { return }
+        guard let searching = trackListVM?.searching() else { return }
         if indexPath.row == count - 3 {
-            if (!trackListVM.searching()) {
-                trackListVM.getNextPage()
+            if (!searching) {
+                trackListVM?.getNextPage()
             }
         }
             
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let track = trackListVM.getTrack(at: indexPath.row) else { return }
+        guard let track = trackListVM?.getTrack(at: indexPath.row) else { return }
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let VM = WatchTrackViewModel(track: track)
         if let VC = storyboard.instantiateViewController(identifier: "TrackVideoID") as? WatchTrackViewController {

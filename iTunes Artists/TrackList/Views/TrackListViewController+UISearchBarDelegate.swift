@@ -12,7 +12,7 @@ extension TrackListViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchText = searchBar.text {
-            self.trackListVM.search(searchText: searchText)
+            self.trackListVM?.search(searchText: searchText)
         }
     }
 }
