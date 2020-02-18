@@ -6,11 +6,11 @@
 //  Copyright © 2020 eduardo. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol TrackListViewModelDelegate: class {
     func didLoadData()
-    func setBackgroundView(withText text: String?, image: UIImage?)
+    func setBackgroundView(withText text: String?, imageName: String)
     func showSkeleton()
     func stopSkeleton()
 }
@@ -20,6 +20,8 @@ protocol TrackListViewModelType {
     var lastSearch:String { get set }
     var page:Int { get set }
     var noMorePages:Bool { get set }
+    func getTrackViewModel(at index: Int) -> TrackViewModelType?
+    func getWatchTrackViewModel(at index: Int) -> WatchTrackViewModelType?
     func searching() -> Bool
     func search(searchText:String)
     func getTrackSize() -> Int?

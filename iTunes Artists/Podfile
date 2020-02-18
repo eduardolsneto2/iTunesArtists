@@ -17,7 +17,7 @@ target 'iTunes Artists' do
   end
 
   target 'iTunes ArtistsUITests' do
-    inherit! :search_paths
+    inherit! :complete
     # Pods for testing
   end
 

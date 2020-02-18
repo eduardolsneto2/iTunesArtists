@@ -6,7 +6,7 @@
 //  Copyright © 2020 eduardo. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class TrackViewModel: TrackViewModelType {
     private var track: Track

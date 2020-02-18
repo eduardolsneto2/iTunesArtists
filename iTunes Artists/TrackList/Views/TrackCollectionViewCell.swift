@@ -18,8 +18,8 @@ class TrackCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var trackTimeLabel: UILabel!
     
-    func settup(track: Track) {
-        self.trackVM = TrackViewModel(track: track)
+    func settup(trackViewModel: TrackViewModelType) {
+        self.trackVM = trackViewModel
         self.songsNameLabel.text = trackVM?.trackName
         self.artistNameLabel.text = trackVM?.artistName
         self.trackTimeLabel.text = trackVM?.trackTime

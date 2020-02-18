@@ -16,9 +16,10 @@ extension TrackListViewController: TrackListViewModelDelegate {
         self.trackListCollectionView.reloadData()
     }
     
-    func setBackgroundView(withText text: String?, image: UIImage?) {
+    func setBackgroundView(withText text: String?, imageName: String) {
         self.refreshControl.endRefreshing()
         self.trackListCollectionView.reloadData()
+        let image = UIImage(named: imageName)
         let backgroundViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "errorVC")
         guard let myView = backgroundViewController.view as? GenericErrorView else { return }
         if let textContent = text {

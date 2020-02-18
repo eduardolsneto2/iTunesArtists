@@ -21,9 +21,9 @@ extension TrackListViewController: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let track = trackListVM?.getTrack(at: indexPath.row) else { return UICollectionViewCell() }
+        guard let trackVM = trackListVM?.getTrackViewModel(at: indexPath.row) else { return UICollectionViewCell() }
         if let cell = self.trackListCollectionView.dequeueReusableCell(withReuseIdentifier: "trackCell", for: indexPath) as? TrackCollectionViewCell {
-            cell.settup(track: track)
+            cell.settup(trackViewModel: trackVM)
             return cell
         } else {
             return UICollectionViewCell()

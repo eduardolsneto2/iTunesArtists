@@ -6,7 +6,7 @@
 //  Copyright © 2020 eduardo. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol WatchTrackViewModelType {
     var track: Track { get set }

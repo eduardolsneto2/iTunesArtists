@@ -24,7 +24,7 @@ class TrackListViewController: UIViewController {
     }
     
     func settupCollectionView() {
-        setBackgroundView(withText: "Type your favorite Artist's Name above and click \"Search\"", image: UIImage(named: "music"))
+        setBackgroundView(withText: "Type your favorite Artist's Name above and click \"Search\"", imageName: "music")
     }
     
     func settupSearch() {

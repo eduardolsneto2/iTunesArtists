@@ -6,7 +6,7 @@
 //  Copyright © 2020 eduardo. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class TrackListViewModel: TrackListViewModelType {
     
@@ -24,13 +24,24 @@ class TrackListViewModel: TrackListViewModelType {
         return trackArray[index]
     }
     
+    func getTrackViewModel(at index: Int) -> TrackViewModelType? {
+        guard let trackArray = tracks.results else { return nil }
+        return TrackViewModel(track: trackArray[index])
+    }
+    
+    func getWatchTrackViewModel(at index: Int) -> WatchTrackViewModelType? {
+        guard let trackArray = tracks.results else { return nil }
+        return WatchTrackViewModel(track: trackArray[index])
+    }
+    
     func getTrackSize() -> Int? {
         return tracks.results?.count
     }
     func searching() -> Bool {
         return isSearching
     }
-    func search(searchText:String) {
+    
+    func prepareForSearch(searchText: String) {
         isSearching = true
         if searchText != lastSearch {
             self.lastSearch = searchText
@@ -41,6 +52,10 @@ class TrackListViewModel: TrackListViewModelType {
         if page == 0 {
             self.delegate?.showSkeleton()
         }
+    }
+    
+    func search(searchText:String) {
+        prepareForSearch(searchText: searchText)
         client.getTracks(with: searchText, andPage: page) { [weak self] result in
               switch result {
               case .success(let trackResult):
@@ -60,7 +75,7 @@ class TrackListViewModel: TrackListViewModelType {
                         self?.isSearching = false
                         if self?.page == 0 {
                             self?.delegate?.setBackgroundView(withText: "Could not find any entrys for: \(searchText)",
-                            image: UIImage(named: "loupe"))
+                            imageName: "loupe")
                         } else {
                             self?.noMorePages = true
                         }
@@ -73,12 +88,12 @@ class TrackListViewModel: TrackListViewModelType {
                 case .requestFailed:
                     self?.isSearching = false
                     self?.delegate?.setBackgroundView(withText: "Could not make the request, please check your internet access",
-                    image: UIImage(named: "close"))
+                    imageName: "close")
                     
                 default:
                     self?.isSearching = false
                     self?.delegate?.setBackgroundView(withText: "Something Went Wrong With the Request",
-                    image: UIImage(named: "close"))
+                    imageName: "close")
                 }
               }
           }

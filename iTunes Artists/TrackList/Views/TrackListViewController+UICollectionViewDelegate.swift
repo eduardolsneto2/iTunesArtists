@@ -21,9 +21,9 @@ extension TrackListViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let track = trackListVM?.getTrack(at: indexPath.row) else { return }
+        guard let trackVM = trackListVM?.getWatchTrackViewModel(at: indexPath.row) else { return }
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let VM = WatchTrackViewModel(track: track)
+        let VM = trackVM
         if let VC = storyboard.instantiateViewController(identifier: "TrackVideoID") as? WatchTrackViewController {
             VC.watchTrackVM = VM
             self.navigationController?.pushViewController(VC, animated: true)
